@@ -13,6 +13,8 @@ def help_command(update: Update, context: CallbackContext) -> None:
 
 
 def handle_actions(update: Update, context: CallbackContext) -> None:
+    if update.message == None:
+        return
     for a in action.actions_list:
         if a.check_message(update):
             a.answer(update)

@@ -23,7 +23,7 @@ class FixedKeysListAction(Action):
         self.ignore_case = True
 
     def check_message(self, update: Update) -> bool:
-        if update.message != None and (self.ignore_case and update.message.text.lower() in self.keywords or update.message.text in self.keywords):
+        if self.ignore_case and update.message.text.lower() in self.keywords or update.message.text in self.keywords:
             return True
         return False
 
@@ -44,7 +44,7 @@ class RegexAction(Action):
             if self.matches:
                 return True
             return False
-        if update.message != None and (re.search(self.pattern, update.message.text)):
+        if re.search(self.pattern, update.message.text):
             return True
         return False
 
