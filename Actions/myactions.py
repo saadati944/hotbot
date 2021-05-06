@@ -1,11 +1,14 @@
 from telegram import Update
 from action import FixedKeysListAction, RegexListAction
 
+
 class HelloAction(FixedKeysListAction):
     def __init__(self):
         self.keywords = ['hi', 'hello', 'سلام', 'hey', 'salam', 'های', 'هلو']
-        self.messages = ['سلام عزیز', 'hi honey', 'چطوری جووون دل ؟', 'به به ببین کی اومده', 'HELLO']
+        self.messages = ['سلام عزیز', 'hi honey',
+                         'چطوری جووون دل ؟', 'به به ببین کی اومده', 'HELLO']
         self.ignore_case = True
+
 
 class EmailDetector(RegexListAction):
     def __init__(self):

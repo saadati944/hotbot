@@ -2,7 +2,8 @@ from telegram import Update
 import random
 import re
 
-actions_list=[]
+actions_list = []
+
 
 class Action:
     def __init__(self):
@@ -13,6 +14,7 @@ class Action:
 
     def answer(self, update: Update):
         pass
+
 
 class FixedKeysListAction(Action):
     def __init__(self):
@@ -28,6 +30,7 @@ class FixedKeysListAction(Action):
     def answer(self, update: Update):
         update.message.reply_text(random.choice(self.messages))
 
+
 class RegexAction(Action):
     def __init__(self):
         self.pattern = ""
@@ -41,6 +44,7 @@ class RegexAction(Action):
     def answer(self, update: Update):
         update.message.reply_text(self.message)
 
+
 class RegexListAction(RegexAction):
     def __init__(self):
         self.pattern = ""
@@ -48,10 +52,6 @@ class RegexListAction(RegexAction):
 
     def answer(self, update: Update):
         update.message.reply_text(random.choice(self.messages))
-
-
-
-
 
 
 # import your actions here
