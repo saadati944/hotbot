@@ -1,14 +1,8 @@
 from telegram import Update
-from action import Action
+from action import FixedKeyAction
 
-class HelloAction(Action):
+class HelloAction(FixedKeyAction):
     def __init__(self):
-        self.hellos = ['hi', 'hello', 'سلام', 'hey']
-        pass
-
-    def check_message(self, update: Update) -> bool:
-        if update.message.text.lower() in self.hellos:
-            return True
-
-    def answer(self, update: Update):
-        update.message.reply_text("سلام عزیزم")
+        self.keywords = ['hi', 'hello', 'سلام', 'hey', 'salam', 'های', 'هلو']
+        self.messages = ['سلام عزیز', 'hi honey', 'چطوری جووون دل ؟', 'به به ببین کی اومده', 'HELLO']
+        self.ignore_case = True
