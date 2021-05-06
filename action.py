@@ -14,19 +14,6 @@ class Action:
     def answer(self, update: Update):
         pass
 
-class FixedKeysAction(Action):
-    def __init__(self):
-        self.keyword = ""
-        self.message = ""
-        self.ignore_case = True
-
-    def check_message(self, update: Update) -> bool:
-        if update.message != None and (self.ignore_case and update.message.text.lower() == self.keyword or update.message.text == self.keyword):
-            return True
-        return False
-
-    def answer(self, update: Update):
-        update.message.reply_text(self.message)
 class FixedKeysListAction(Action):
     def __init__(self):
         self.keywords = []
