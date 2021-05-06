@@ -35,8 +35,15 @@ class RegexAction(Action):
     def __init__(self):
         self.pattern = ""
         self.message = ''
+        self.find_matches = False
+        self.matches = []
 
     def check_message(self, update: Update) -> bool:
+        if self.find_matches:
+            self.matches = re.findall(self.pattern, update.message.text)
+            if self.matches:
+                return True
+            return False
         if update.message != None and (re.search(self.pattern, update.message.text)):
             return True
         return False
@@ -47,7 +54,8 @@ class RegexAction(Action):
 
 class RegexListAction(RegexAction):
     def __init__(self):
-        self.pattern = ""
+        super().__init__()
+        # self.pattern = ""
         self.messages = []
 
     def answer(self, update: Update):
